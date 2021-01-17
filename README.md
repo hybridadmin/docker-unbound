@@ -17,14 +17,19 @@ Unbound is a validating, recursive, and caching DNS resolver.
 Run this container with the following command:
 
 ```console
-docker run --name my-unbound -d -p 53:53/udp -p 53:53/tcp \
---restart=always hybridadmin/unbound:latest
+docker run --name my-unbound -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/unbound:latest
 ```
 
-### Override default forward
+To run older versions use the version tag for the required container image, i.e for version 1.12.0, run the following command:
 
-By default, DNSBL support is added by generating a unbound_blacklist.conf and unbound_whitelist.conf in "/opt/unbound/etc/unbound" using the script [1.13.0/unbound_dnsbl.sh](1.13.0/unbound_dnsbl.sh). These 2 files have been 
+```console
+docker run --name my-unbound -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/unbound:1.12.0
+```
 
+
+### DNSBL support
+
+By default, DNSBL support is added by generating a unbound_blacklist.conf and unbound_whitelist.conf in "/opt/unbound/etc/unbound" using the script [1.13.0/unbound_dnsbl.sh](1.13.0/unbound_dnsbl.sh). These 2 files have been
 included in the unbound config file `/opt/unbound/etc/unbound/unbound.conf` using the "include:" option in the container as below.
 
 Example `unbound.conf`:
