@@ -2,9 +2,9 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`1.13.0`, `latest` (*1.13.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/master/1.13.0)
-- [`1.12.0`, (*1.12.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/master/1.12.0)
-- [`1.11.0`, (*1.11.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/master/1.11.0)
+- [`1.13.0`, `latest` (*1.13.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/main/1.13.0)
+- [`1.12.0`, (*1.12.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/main/1.12.0)
+- [`1.11.0`, (*1.11.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/main/1.11.0)
 
 ## What is Unbound?
 
@@ -43,10 +43,6 @@ server:
 
 Documentation for Unbound is available on the [project's website](https://unbound.net/).
 
-## Issues
-
-If you have any problems with or questions about this image, please contact me
-through a [GitHub issue](https://github.com/hybridadmin/unbound-docker/issues).
 
 ## Licenses
 
