@@ -55,7 +55,4 @@ rm whitelist.txt.old
 rm unbound_whitelist.conf
 echo "Whitelist updated"
 
-#echo "Trigger unbound reload"
-#echo -e " ${TICK} \e[32m Triggering unbound to reload config... \e[0m"
-#sudo unbound-control -c "/opt/unbound/etc/unbound/unbound.conf" reload
 echo "Execution completed!"
