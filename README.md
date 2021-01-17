@@ -2,9 +2,9 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`1.13.0`, `latest` (*1.13.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/main/1.13.0)
-- [`1.12.0`, (*1.12.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/main/1.12.0)
-- [`1.11.0`, (*1.11.0/Dockerfile*)](https://github.com/hybridadmin/unbound-docker/tree/main/1.11.0)
+- [`1.13.0`, `latest` (*1.13.0/Dockerfile*)](https://github.com/hybridadmin/docker-unbound/tree/main/1.13.0)
+- [`1.12.0`, (*1.12.0/Dockerfile*)](https://github.com/hybridadmin/docker-unbound/tree/main/1.12.0)
+- [`1.11.0`, (*1.11.0/Dockerfile*)](https://github.com/hybridadmin/docker-unbound/tree/main/1.11.0)
 
 ## What is Unbound?
 
@@ -50,5 +50,5 @@ Documentation for Unbound is available on the [project's website](https://unboun
 
 Unless otherwise specified, all code is released under the MIT License (MIT).
 See the [repository's `LICENSE`
-file](https://github.com/hybridadmin/unbound-docker/blob/master/LICENSE) for
+file](https://github.com/hybridadmin/docker-unbound/blob/master/LICENSE) for
 details.
