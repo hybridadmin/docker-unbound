@@ -49,13 +49,3 @@ The blacklists/whitelists used are from the [Aha.Dns.Domains](https://github.com
 ## Documentation
 
 Documentation for Unbound is available on the [project's website](https://unbound.net/).
-
-
-## Licenses
-
-### License
-
-Unless otherwise specified, all code is released under the MIT License (MIT).
-See the [repository's `LICENSE`
-file](https://github.com/hybridadmin/docker-unbound/blob/master/LICENSE) for
-details.
