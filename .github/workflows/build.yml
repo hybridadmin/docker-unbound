@@ -44,3 +44,11 @@ jobs:
           push: true
           tags: |
             hybridadmin/unbound:1.12.0
+      -
+        name: Update Repo Description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: hybridadmin/unbound
+          readme-filepath: ./README.md
