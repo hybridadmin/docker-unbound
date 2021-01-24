@@ -1,5 +1,7 @@
 # Unbound DNS Server Docker Image with DNSBL
 
+![ci](https://github.com/hybridadmin/docker-unbound/workflows/ci/badge.svg?branch=main)
+
 ## Supported tags and respective `Dockerfile` links
 
 - [`1.13.0`, `latest` (*1.13.0/Dockerfile*)](https://github.com/hybridadmin/docker-unbound/tree/main/1.13.0/Dockerfile)
