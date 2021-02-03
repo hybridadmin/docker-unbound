@@ -26,8 +26,8 @@ services:
     environment:
       - LISTEN_ADDR
       - CACHE_MAX_TTL=86400 #optional
-      - CACHE_MIN_TTL=300 #optional 
-      - EDNS_BUFFER_SIZE=1232 #optional 
+      - CACHE_MIN_TTL=300 #optional
+      - EDNS_BUFFER_SIZE=1232 #optional
       - RRSET_ROUNDROBIN=yes #optional
       - LOG_VERBOSITY=0 #optional
       - AGGRESSIVE_NSEC=yes #optional
