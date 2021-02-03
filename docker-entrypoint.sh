@@ -47,7 +47,7 @@ server:
     # original (larger) values. When the internal TTL expires, the cache item
     # has expired. Can be set lower to force the resolver to query for data
     # often, and not trust (very large) TTL values.
-    cache-max-ttl: 86400
+    cache-max-ttl: ${CACHE_MAX_TTL:-86400}
 
     # Time to live minimum for RRsets and messages in the cache. If the minimum
     # kicks in, the data is cached for longer than the domain owner intended,
@@ -55,7 +55,7 @@ server:
     # data in the cache is as the domain owner intended, higher values,
     # especially more than an hour or so, can lead to trouble as the data in
     # the cache does not match up with the actual data any more.
-    cache-min-ttl: 300
+    cache-min-ttl: ${CACHE_MIN_TTL:-300}
 
     # Set the working directory for the program.
     directory: "/opt/unbound/etc/unbound"
@@ -69,15 +69,15 @@ server:
     # is seen as extreme, since the amount of TCP fallback generated is
     # excessive (probably also for this resolver, consider tuning the outgoing
     # tcp number).
-    edns-buffer-size: 1232
+    edns-buffer-size: ${EDNS_BUFFER_SIZE:-1232}
 
     # Listen to for queries from clients and answer from this network interface
     # and port.
-    interface: 0.0.0.0@53
+    interface: ${LISTEN_ADDR:-0.0.0.0}@53
 
     # Rotates RRSet order in response (the pseudo-random number is taken from
     # the query ID, for speed and thread safety).
-    rrset-roundrobin: yes
+    rrset-roundrobin: ${RRSET_ROUNDROBIN:-yes}
 
     # Drop user  privileges after  binding the port.
     username: "_unbound"
@@ -102,7 +102,7 @@ server:
     logfile: /dev/null
 
     # Only log errors
-    verbosity: 0
+    verbosity: ${LOG_VERBOSITY:-0}
 
     ###########################################################################
     # PRIVACY SETTINGS
@@ -115,7 +115,7 @@ server:
     # decreases latency and resource utilization on both authoritative and
     # recursive servers, and increases privacy. Also, it may help increase
     # resilience to certain DoS attacks in some circumstances.
-    aggressive-nsec: yes
+    aggressive-nsec: ${AGGRESSIVE_NSEC:-yes}
 
     # Extra delay for timeouted UDP ports before they are closed, in msec.
     # This prevents very delayed answer packets from the upstream (recursive)
@@ -129,14 +129,14 @@ server:
     do-daemonize: no
 
     # Add localhost to the do-not-query-address list.
-    do-not-query-localhost: no
+    do-not-query-localhost: ${DO_NOT_QUERY_LOCALHOST:-no}
 
     # Number  of  bytes size of the aggressive negative cache.
-    neg-cache-size: 4M
+    neg-cache-size: ${NEG_CACHE_SIZE_MB:-4}M
 
     # Send minimum amount of information to upstream servers to enhance
     # privacy (best privacy).
-    qname-minimisation: yes
+    qname-minimisation: ${QNAME_MINIMISATION:-yes}
 
     ###########################################################################
     # SECURITY SETTINGS
@@ -158,7 +158,7 @@ server:
     chroot: "/opt/unbound/etc/unbound"
 
     # Deny queries of type ANY with an empty response.
-    deny-any: yes
+    deny-any: ${DENY_ANY:-yes}
 
     # Harden against algorithm downgrade when multiple algorithms are
     # advertised in the DS record.
@@ -166,18 +166,18 @@ server:
 
     # RFC 8020. returns nxdomain to queries for a name below another name that
     # is already known to be nxdomain.
-    harden-below-nxdomain: yes
+    harden-below-nxdomain: ${HARDEN_BELOW_NXDOMAIN:-yes}
 
     # Require DNSSEC data for trust-anchored zones, if such data is absent, the
     # zone becomes bogus. If turned off you run the risk of a downgrade attack
     # that disables security for a zone.
-    harden-dnssec-stripped: yes
+    harden-dnssec-stripped: ${HARDEN_DNSSEC_STRIPPED:-yes}
 
     # Only trust glue if it is within the servers authority.
-    harden-glue: yes
+    harden-glue: ${HARDEN_GLUE:-yes}
 
     # Ignore very large queries.
-    harden-large-queries: yes
+    harden-large-queries: ${HARDEN_LARGE_QUERIES:-yes}
 
     # Perform additional queries for infrastructure data to harden the referral
     # path. Validates the replies if trust anchors are configured and the zones
@@ -190,10 +190,10 @@ server:
     harden-short-bufsize: yes
 
     # Refuse id.server and hostname.bind queries
-    hide-identity: yes
+    hide-identity: ${HIDE_IDENTITY:-yes}
 
     # Refuse version.server and version.bind queries
-    hide-version: yes
+    hide-version: ${HIDE_VERSION:-yes}
 
     # Report this identity rather than the hostname of the server.
     identity: "DNS"
@@ -225,21 +225,21 @@ server:
     # When it reaches the threshold, a defensive action of clearing the rrset
     # and message caches is taken, hopefully flushing away any poison.
     # Unbound suggests a value of 10 million.
-    unwanted-reply-threshold: 10000
+    unwanted-reply-threshold: ${UNWANTED_REPLY_THRESHOLD:-10000}
 
     # Use 0x20-encoded random bits in the query to foil spoof attempts. This
     # perturbs the lowercase and uppercase of query names sent to authority
     # servers and checks if the reply still has the correct casing.
     # This feature is an experimental implementation of draft dns-0x20.
     # Experimental option.
-    use-caps-for-id: yes
+    use-caps-for-id: ${USE_CAPS_FOR_ID:-yes}
 
     # Help protect users that rely on this validator for authentication from
     # potentially bad data in the additional section. Instruct the validator to
     # remove data from the additional section of secure messages that are not
     # signed properly. Messages that are insecure, bogus, indeterminate or
     # unchecked are not affected.
-    val-clean-additional: yes
+    val-clean-additional: ${VAL_CLEAN_ADDITIONAL:-yes}
 
     ###########################################################################
     # PERFORMANCE SETTINGS
@@ -278,7 +278,7 @@ server:
     # This is best set at half the number of the outgoing-range.
     # This Unbound instance was compiled with libevent so it can efficiently
     # use more than 1024 file descriptors.
-    num-queries-per-thread: 4096
+    num-queries-per-thread: ${NUM_QUERIES_PER_THREAD:-4096}
 
     # The number of threads to create to serve clients.
     # This is set dynamically at run time to effectively use available CPUs
@@ -289,7 +289,7 @@ server:
     # per thread.
     # This Unbound instance was compiled with libevent so it can efficiently
     # use more than 1024 file descriptors.
-    outgoing-range: 8192
+    outgoing-range: ${OUTGOING_RANGE:-8192}
 
     # Number of bytes size of the RRset cache.
     # Use roughly twice as much rrset cache memory as msg cache memory
@@ -303,7 +303,7 @@ server:
     # those sections are not required. This reduces response size
     # significantly, and may avoid TCP fallback for some responses. This may
     # cause a slight speedup.
-    minimal-responses: yes
+    minimal-responses: ${MINIMAL_RESPONSES:-yes}
 
     # # Fetch the DNSKEYs earlier in the validation process, when a DS record
     # is encountered. This lowers the latency of requests at the expense of
@@ -335,7 +335,7 @@ server:
 
 
 remote-control:
-    control-enable: yes
+    control-enable: ${CONTROL_ENABLE:-yes}
     control-interface: 127.0.0.1
 EOT
 fi

@@ -83,9 +83,9 @@ RUN set -x && \
 
 COPY unbound_dnsbl.sh /opt/unbound/etc/unbound/
 RUN chmod +x /opt/unbound/etc/unbound/unbound_dnsbl.sh && /opt/unbound/etc/unbound/unbound_dnsbl.sh
-COPY unbound.sh /
+COPY docker-entrypoint.sh /
 
-RUN chmod +x /unbound.sh
+RUN chmod +x /docker-entrypoint.sh
 
 WORKDIR /opt/unbound/
 
@@ -96,4 +96,4 @@ EXPOSE 53/udp
 
 HEALTHCHECK --interval=5s --timeout=3s --start-period=5s CMD drill @127.0.0.1 cloudflare.com || exit 1
 
-CMD ["/unbound.sh"]
+CMD ["/docker-entrypoint.sh"]
