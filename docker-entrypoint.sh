@@ -345,7 +345,14 @@ cp -a /dev/random /dev/urandom /dev/null /opt/unbound/etc/unbound/dev/
 
 mkdir -p -m 700 /opt/unbound/etc/unbound/var && \
 chown _unbound:_unbound /opt/unbound/etc/unbound/var && \
-/opt/unbound/sbin/unbound-anchor -a /opt/unbound/etc/unbound/var/root.key
+
+# libunbound[451:0] error: udp connect failed: Network is unreachable fix
+if [ $(ip addr | grep inet6 | wc -l) -gt 0 ]; then
+        /opt/unbound/sbin/unbound-anchor -a /opt/unbound/etc/unbound/var/root.key
+else
+        /opt/unbound/sbin/unbound-anchor -4 -a /opt/unbound/etc/unbound/var/root.key
+fi
+
 /opt/unbound/sbin/unbound-control-setup
 
 exec /opt/unbound/sbin/unbound -d -c /opt/unbound/etc/unbound/unbound.conf
