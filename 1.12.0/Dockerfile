@@ -66,6 +66,7 @@ RUN set -x && \
       sudo \
       curl \
       bsdmainutils \
+      iproute2 \
       ca-certificates \
       ldnsutils \
       libexpat1-dev \

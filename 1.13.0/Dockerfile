@@ -65,6 +65,7 @@ RUN set -x && \
     DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
       sudo \
       curl \
+      iproute2 \
       bsdmainutils \
       ca-certificates \
       ldnsutils \
