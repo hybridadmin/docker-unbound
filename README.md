@@ -15,7 +15,7 @@ Unbound is a validating, recursive, and caching DNS resolver.
 ## Usage
 
 ### docker-compose
-```console
+```yaml
 ---
 version: "3.2"
 services:
