@@ -1,4 +1,4 @@
-FROM ubuntu:bionic as unbound
+FROM debian:buster-slim as unbound
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
@@ -42,7 +42,7 @@ RUN build_deps="curl apt-utils gcc make libexpat1-dev libssl-dev libudev-dev lib
         /var/lib/apt/lists/*
 
 
-FROM ubuntu:bionic
+FROM debian:buster-slim
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 # This script will download the oisd.nl block list and create a unbound compatible block list.
 # The black- & white-list from the Aha.Dns.Domains is also used (source: https://github.com/AhaDNS/Aha.Dns.Domains)
 # Author: NoExitTV (Fredrik Pettersson)
