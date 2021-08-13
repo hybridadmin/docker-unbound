@@ -2,8 +2,8 @@ FROM debian:buster-slim as unbound
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.13.0 \
-    UNBOUND_SHA256=a954043a95b0326ca4037e50dace1f3a207a0a19e9a4a22f4c6718fc623db2a1
+    UNBOUND_VERSION=1.13.2 \
+    UNBOUND_SHA256=0a13b547f3b92a026b5ebd0423f54c991e5718037fd9f72445817f6a040e1a83
 
 WORKDIR /tmp/src
 
