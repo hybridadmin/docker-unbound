@@ -23,7 +23,7 @@ version: "3.2"
 services:
   unbound:
     image: hybridadmin/unbound:latest
-    container_name: unbound-server
+    container_name: unbound
     hostname: unbound-server #optional
     environment:
       - LISTEN_ADDR
@@ -61,13 +61,13 @@ services:
 Run a container with the default settings:
 
 ```console
-docker run -d -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/unbound:latest
+docker run -d --name unbound -p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/unbound:latest
 ```
 
 Run a container with customized settings:
 
 ```console
-docker run -d \
+docker run -d --name unbound \
 -e LISTEN_ADDR
 -e CACHE_MAX_TTL=86400 #optional \
 -e CACHE_MIN_TTL=300 #optional \
