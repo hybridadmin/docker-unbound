@@ -2,7 +2,7 @@ FROM debian:buster-slim as unbound
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.12.0
+    UNBOUND_VERSION=1.14.0
 
 WORKDIR /tmp/src
 
@@ -18,7 +18,7 @@ RUN build_deps="curl apt-utils gcc make libexpat1-dev libssl-dev libudev-dev lib
     echo "${UNBOUND_SHA256} *unbound.tar.gz" | sha256sum -c - && \
     tar xzf unbound.tar.gz && \
     rm -f unbound.tar.gz && \
-    cd "unbound-${UNBOUND_VERSION}" && \
+    cd unbound-${UNBOUND_VERSION} && \
     groupadd _unbound && \
     useradd -g _unbound -s /etc -d /dev/null _unbound && \
     ./configure \
@@ -65,8 +65,8 @@ RUN set -x && \
     DEBIAN_FRONTEND=noninteractive apt-get update && apt-get install -y --no-install-recommends \
       sudo \
       curl \
-      bsdmainutils \
       iproute2 \
+      bsdmainutils \
       ca-certificates \
       ldnsutils \
       libexpat1-dev \

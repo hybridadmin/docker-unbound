@@ -2,8 +2,7 @@ FROM debian:buster-slim as unbound
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.13.0 \
-    UNBOUND_SHA256=a954043a95b0326ca4037e50dace1f3a207a0a19e9a4a22f4c6718fc623db2a1
+    UNBOUND_VERSION=1.13.0
 
 WORKDIR /tmp/src
 
@@ -15,6 +14,7 @@ RUN build_deps="curl apt-utils gcc make libexpat1-dev libssl-dev libudev-dev lib
       ca-certificates \
       ldnsutils && \
       curl -sSL "https://nlnetlabs.nl/downloads/unbound/unbound-${UNBOUND_VERSION}.tar.gz" -o unbound.tar.gz && \
+    UNBOUND_SHA256="$(curl -fsSL https://nlnetlabs.nl/downloads/unbound/unbound-${UNBOUND_VERSION}.tar.gz.sha256)" && \
     echo "${UNBOUND_SHA256} *unbound.tar.gz" | sha256sum -c - && \
     tar xzf unbound.tar.gz && \
     rm -f unbound.tar.gz && \
