@@ -29,7 +29,11 @@ jobs:
           - image: unbound
             version: "1.13.2"
             platform: "linux/amd64"
-            tags: "1.13.2,latest"
+            tags: "1.13.2"
+          - image: unbound
+            version: "1.14.0"
+            platform: "linux/amd64"
+            tags: "1.14.0,latest"
 
 
     steps:
