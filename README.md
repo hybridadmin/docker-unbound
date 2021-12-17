@@ -1,4 +1,4 @@
-# Unbound DNS Server Docker Image with DNSBL
+# Unbound DNS Server docker image with DNSBL
 
 ![ci](https://github.com/hybridadmin/docker-unbound/workflows/ci/badge.svg?branch=main) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/unbound)
 
