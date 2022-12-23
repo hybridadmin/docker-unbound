@@ -23,17 +23,21 @@ jobs:
             platform: "linux/amd64"
             tags: "1.13.0"
           - image: unbound
-            version: "1.13.1"
-            platform: "linux/amd64"
-            tags: "1.13.1"
-          - image: unbound
-            version: "1.13.2"
-            platform: "linux/amd64"
-            tags: "1.13.2"
-          - image: unbound
             version: "1.14.0"
             platform: "linux/amd64"
-            tags: "1.14.0,latest"
+            tags: "1.14.0"
+          - image: unbound
+            version: "1.15.0"
+            platform: "linux/amd64"
+            tags: "1.15.0"
+          - image: unbound
+            version: "1.16.0"
+            platform: "linux/amd64"
+            tags: "1.16.0"
+          - image: unbound
+            version: "1.17.0"
+            platform: "linux/amd64"
+            tags: "1.17.0,latest"
 
 
     steps:

@@ -2,7 +2,7 @@ FROM debian:buster-slim as unbound
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.13.1
+    UNBOUND_VERSION=1.15.0
 
 WORKDIR /tmp/src
 
