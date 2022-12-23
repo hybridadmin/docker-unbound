@@ -65,10 +65,17 @@ jobs:
             $(for i in $(echo ${{ matrix.distribution.tags }} | sed "s/,/ /g"); do echo "--tag hybridadmin/${{ matrix.distribution.image }}:$i "; done) \
             .
 
+  update_readme:
+    needs:
+      - build
+    runs-on: ubuntu-20.04
+    strategy:
+      fail-fast: false
+    steps:
       - name: Update Repo Readme/Description
         uses: peter-evans/dockerhub-description@v2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: hybridadmin/unbound
           readme-filepath: ./README.md
