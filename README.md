@@ -4,7 +4,7 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`1.17.0`, `latest`](https://github.com/hybridadmin/docker-unbound/tree/main/1.14.0/Dockerfile)
+- [`1.17.0`, `latest`](https://github.com/hybridadmin/docker-unbound/tree/main/1.17.0/Dockerfile)
 - [`1.16.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.16.0/Dockerfile)
 - [`1.15.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.15.0/Dockerfile)
 - [`1.14.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.14.0/Dockerfile)
