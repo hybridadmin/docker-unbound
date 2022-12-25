@@ -1,6 +1,6 @@
 # Unbound DNS Server docker image with DNSBL
 
-![ci](https://github.com/hybridadmin/docker-unbound/workflows/ci/badge.svg?branch=main) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/unbound)
+[![Build](https://github.com/hybridadmin/docker-unbound/actions/workflows/build.yml/badge.svg)](https://github.com/hybridadmin/docker-unbound/actions/workflows/build.yml) ![Docker Pulls](https://img.shields.io/docker/pulls/hybridadmin/unbound)
 
 ## Supported tags and respective `Dockerfile` links
 
