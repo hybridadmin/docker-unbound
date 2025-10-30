@@ -29,7 +29,7 @@ jobs:
     with:
       distro_image: '${{ matrix.distro.image }}'
       distro_tags: '${{ matrix.distro.tags }}'
-      distro_platform: 'linux/amd64,linux/arm64' #'${{ matrix.distro.platform }}'
+      distro_platform: 'linux/amd64,linux/arm64'
       distro_version: '${{ matrix.distro.version }}'
       skip_tests: 'true'
 
