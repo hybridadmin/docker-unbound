@@ -24,7 +24,7 @@ jobs:
           - image: unbound
             version: "1.24.0"
             tags: "1.24.0,latest"
-    uses: hybridadmin/reuse-workflows/.github/workflows/build_push.yml@main
+    uses: hybridadmin/reuse-workflows/.github/workflows/build_push_apps.yml@main
     secrets: inherit
     with:
       distro_image: '${{ matrix.distro.image }}'
