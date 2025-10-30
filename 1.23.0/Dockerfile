@@ -2,7 +2,7 @@ FROM debian:trixie-slim AS unbound
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.17.0
+    UNBOUND_VERSION=1.23.0
 
 WORKDIR /tmp/src
 
@@ -46,7 +46,7 @@ FROM debian:trixie-slim
 LABEL maintainer="Tinashe Chikomo"
 
 ENV NAME=unbound \
-    UNBOUND_VERSION=1.17.0 \
+    UNBOUND_VERSION=1.23.0 \
     VERSION=1.2 \
     SUMMARY="${NAME:-unbound} is a validating, recursive, and caching DNS resolver." \
     DESCRIPTION="${NAME:-unbound} is a validating, recursive, and caching DNS resolver."

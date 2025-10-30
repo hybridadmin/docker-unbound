@@ -4,12 +4,11 @@
 
 ## Supported tags and respective `Dockerfile` links
 
-- [`1.17.0`, `latest`](https://github.com/hybridadmin/docker-unbound/tree/main/1.17.0/Dockerfile)
-- [`1.16.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.16.0/Dockerfile)
-- [`1.15.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.15.0/Dockerfile)
-- [`1.14.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.14.0/Dockerfile)
-- [`1.13.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.13.0/Dockerfile)
-- [`1.12.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.12.0/Dockerfile)
+- [`1.24.0`, `latest`](https://github.com/hybridadmin/docker-unbound/tree/main/1.24.0/Dockerfile)
+- [`1.23.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.23.0/Dockerfile)
+- [`1.22.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.22.0/Dockerfile)
+- [`1.21.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.21.0/Dockerfile)
+- [`1.20.0`](https://github.com/hybridadmin/docker-unbound/tree/main/1.20.0/Dockerfile)
 
 ## What is Unbound?
 
@@ -21,14 +20,13 @@ Unbound is a validating, recursive, and caching DNS resolver.
 ### docker-compose
 ```yaml
 ---
-version: "3.2"
 services:
   unbound:
     image: hybridadmin/unbound:latest
     container_name: unbound
     hostname: unbound-server #optional
     environment:
-      - LISTEN_ADDR
+      - LISTEN_ADDR=0.0.0.0
       - CACHE_MAX_TTL=86400 #optional
       - CACHE_MIN_TTL=300 #optional
       - EDNS_BUFFER_SIZE=1232 #optional
@@ -70,7 +68,7 @@ Run a container with customized settings:
 
 ```console
 docker run -d --name unbound \
--e LISTEN_ADDR
+-e LISTEN_ADDR=0.0.0.0 \
 -e CACHE_MAX_TTL=86400 #optional \
 -e CACHE_MIN_TTL=300 #optional \
 -e EDNS_BUFFER_SIZE=1232 #optional \
@@ -94,7 +92,7 @@ docker run -d --name unbound \
 -e OUTGOING_RANGE=8192 #optional \
 -e MINIMAL_RESPONSES=yes #optional \
 -e CONTROL_ENABLE=yes #optional \
--p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/unbound:1.12.0
+-p 53:53/udp -p 53:53/tcp --restart=always hybridadmin/unbound:1.24.0
 ```
 
 

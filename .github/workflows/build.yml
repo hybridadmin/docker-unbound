@@ -10,23 +10,20 @@ jobs:
       matrix:
         distro:
           - image: unbound
-            version: "1.12.0"
-            tags: "1.12.0"
+            version: "1.20.0"
+            tags: "1.20.0"
           - image: unbound
-            version: "1.13.0"
-            tags: "1.13.0"
+            version: "1.21.0"
+            tags: "1.21.0"
           - image: unbound
-            version: "1.14.0"
-            tags: "1.14.0"
+            version: "1.22.0"
+            tags: "1.22.0"
           - image: unbound
-            version: "1.15.0"
-            tags: "1.15.0"
+            version: "1.23.0"
+            tags: "1.23.0"
           - image: unbound
-            version: "1.16.0"
-            tags: "1.16.0"
-          - image: unbound
-            version: "1.17.0"
-            tags: "1.17.0,latest"
+            version: "1.24.0"
+            tags: "1.24.0,latest"
     uses: hybridadmin/reuse-workflows/.github/workflows/build_push.yml@main
     secrets: inherit
     with:
