@@ -1,84 +1,44 @@
-name: Build
+name: build_push
 
-on:
-  push:
-  pull_request:
-  schedule:
-    - cron: '0 18 * * sun'
+on: [push]
 
 jobs:
-  build:
-    name: ${{ matrix.distribution.image }}-${{ matrix.distribution.version }}
-    runs-on: ubuntu-20.04
+  run_molecule_test:
     strategy:
       fail-fast: false
+      max-parallel: 5
       matrix:
-        distribution:
+        distro:
           - image: unbound
             version: "1.12.0"
             tags: "1.12.0"
-            platform: "linux/amd64"
           - image: unbound
             version: "1.13.0"
-            platform: "linux/amd64"
             tags: "1.13.0"
           - image: unbound
             version: "1.14.0"
-            platform: "linux/amd64"
             tags: "1.14.0"
           - image: unbound
             version: "1.15.0"
-            platform: "linux/amd64"
             tags: "1.15.0"
           - image: unbound
             version: "1.16.0"
-            platform: "linux/amd64"
             tags: "1.16.0"
           - image: unbound
             version: "1.17.0"
-            platform: "linux/amd64"
             tags: "1.17.0,latest"
+    uses: hybridadmin/reuse-workflows/.github/workflows/build_push.yml@main
+    secrets: inherit
+    with:
+      distro_image: '${{ matrix.distro.image }}'
+      distro_tags: '${{ matrix.distro.tags }}'
+      distro_platform: 'linux/amd64,linux/arm64' #'${{ matrix.distro.platform }}'
+      distro_version: '${{ matrix.distro.version }}'
 
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Set up QEMU
-        uses: docker/setup-qemu-action@v2
-
-      - name: Set up Docker Buildx
-        uses: docker/setup-buildx-action@v2
-
-      - name: Login to DockerHub
-        uses: docker/login-action@v2
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-
-      - name: Build/Push Docker to DockerHub
-        run: |
-          docker buildx build \
-            --push \
-            --platform ${{ matrix.distribution.platform }} \
-            --file=${{ matrix.distribution.version }}/Dockerfile \
-            $(for i in $(echo ${{ matrix.distribution.tags }} | sed "s/,/ /g"); do echo "--tag hybridadmin/${{ matrix.distribution.image }}:$i "; done) \
-            .
-
-  update_readme:
+  run_update_readme:
     needs:
-      - build
-    runs-on: ubuntu-20.04
-    strategy:
-      fail-fast: false
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-
-      - name: Update Repo Readme/Description
-        uses: peter-evans/dockerhub-description@v3
-        with:
-          username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_TOKEN }}
-          repository: hybridadmin/unbound
-          readme-filepath: ./README.md
+      - run_molecule_test
+    uses: hybridadmin/reuse-workflows/.github/workflows/update_readme.yml@main
+    secrets: inherit
+    with:
+      repo_name: 'hybridadmin/unbound'
